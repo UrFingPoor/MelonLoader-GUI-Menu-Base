@@ -8,13 +8,12 @@ namespace SpacewareCheats
 {
     class MainUI
     {
-	    public static bool showMenu = false;
-	    private static object selectedPlayer;
-	    private static int selectedTab, yOffset = 0;
-	    private static GUIStyle MainBox, Header, MainTabs = null;
-	     
-        public static void ToggleMenu() => showMenu = !showMenu;
-		
+	public static bool showMenu = false;
+	private static object selectedPlayer;
+	private static int selectedTab, yOffset = 0;
+	public static void ToggleMenu() => showMenu = !showMenu;
+	private static GUIStyle MainBox, Header, MainTabs = null;
+	     	
         private static Texture2D MakeTex(int width, int height, Color col)
         {
             Color[] pix = new Color[width * height]; for (int i = 0; i < pix.Length; ++i) pix[i] = col;
@@ -25,7 +24,7 @@ namespace SpacewareCheats
             return result;
         }
 		
-		  public static void DisplayHud()
+	public static void DisplayHud()
         {
             GUI.BeginGroup(new Rect(10, 2, 328, 25));
             Header = new GUIStyle(GUI.skin.box);
@@ -37,11 +36,9 @@ namespace SpacewareCheats
 		
         public static void InitMenu()
         {
-			DisplayHud(); // Will show even if the menu isn't open
-           
- 		    if (!showMenu) return; 
-			
-			// Menu Background Setup
+            DisplayHud(); // Will show even if the menu isn't open	
+	    if (!showMenu) return; 	
+            // Menu Background Setup
             GUI.BeginGroup(new Rect(10, 10, 330, 500));
             MainBox = new GUIStyle(GUI.skin.box);
             MainBox.normal.background = MakeTex(2, 2, new Color(0f, 0f, 0f, 1.0f));
@@ -53,9 +50,9 @@ namespace SpacewareCheats
             MainTabs.normal.background = MakeTex(2, 2, new Color(0f, 1f, 0f, 0.75f));
             MainTabs.normal.textColor = Color.black;
            
-			// This should be updated as this is ghetto!
-			// This draws the buttons to a fixed location.
-		    if (GUI.Button(new Rect(20, 40, 60, 27), (selectedTab == 0) ? "► Main" : "Main", MainTabs)) { selectedTab = 0; }
+            // This should be updated as this is ghetto!
+	    // This draws the buttons to a fixed location.
+            if (GUI.Button(new Rect(20, 40, 60, 27), (selectedTab == 0) ? "► Main" : "Main", MainTabs)) { selectedTab = 0; }
             if (GUI.Button(new Rect(80, 40, 60, 27), (selectedTab == 1) ? "► Fun" : "Fun", MainTabs)) { selectedTab = 1; }
             if (GUI.Button(new Rect(140, 40, 60, 27), (selectedTab == 2) ? "► World" : "World", MainTabs)) { selectedTab = 2; }
             if (GUI.Button(new Rect(200, 40, 60, 27), (selectedTab == 3) ? "► Misc" : "Misc", MainTabs)) { selectedTab = 3; }
